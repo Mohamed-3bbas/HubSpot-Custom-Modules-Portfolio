@@ -1,0 +1,41 @@
+{# ========== PROJECTS LIST MODULE ========== #}
+
+<section class="projects-list-section" id="projects" data-module="projects-list">
+  <div class="projects-list-container">
+    
+    {% if module.section_title %}
+      <h2 class="projects-title">{{ module.section_title }}</h2>
+    {% else %}
+      <h2 class="projects-title">Projects</h2>
+    {% endif %}
+
+    {% if module.projects %}
+      <div class="projects-items">
+        {% for project in module.projects %}
+          <div class="project-list-item">
+            
+            <div class="project-content">
+              <h3 class="project-title">{{ project.project_name }}</h3>
+              
+              {% if project.description %}
+                <p class="project-desc">{{ project.description }}</p>
+              {% endif %}
+
+              {% if project.demo_link %}
+                <a href="{{ project.demo_link }}" target="_blank" rel="noopener noreferrer" class="view-project-btn">
+                  View Project
+                </a>
+              {% endif %}
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-projects">
+        <p>No projects added yet.</p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>

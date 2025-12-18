@@ -1,0 +1,54 @@
+{# ========== PROJECT HERO MODULE ========== #}
+
+<section class="project-hero" id="project-hero" data-module="project-hero">
+  <div class="hero-gradient"></div>
+
+  <div class="hero-wrapper">
+    
+    {# Profile Image #}
+    {% if module.profile_image.src %}
+      <div class="profile-wrapper">
+        <img 
+          src="{{ module.profile_image.src }}" 
+          alt="{{ module.profile_image.alt or 'Profile' }}"
+          class="profile-image"
+        />
+
+      </div>
+    {% endif %}
+
+    {# Name #}
+    {% if module.full_name %}
+      <h1 class="hero-name">{{ module.full_name }}</h1>
+    {% else %}
+      <h1 class="hero-name">Your Name</h1>
+    {% endif %}
+
+    {# Title/Role #}
+    {% if module.job_title or module.company %}
+      <p class="hero-subtitle">
+        {% if module.job_title %}
+          {{ module.job_title }}
+        {% endif %}
+        {% if module.job_title and module.company %}
+          | 
+        {% endif %}
+        {% if module.company %}
+          {{ module.company }}
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {# CTA Button #}
+    {% if module.cta_button_text and module.cta_button_link %}
+      <a href="{{ module.cta_button_link }}" class="hero-cta">
+        {{ module.cta_button_text }}
+      </a>
+    {% else %}
+      <a href="#contact" class="hero-cta">
+        Get In Touch
+      </a>
+    {% endif %}
+
+  </div>
+</section>

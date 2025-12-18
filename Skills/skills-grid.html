@@ -1,0 +1,49 @@
+  {# ========== SKILLS GRID MODULE ========== #}
+
+<section class="skills-grid-section" id="skills" data-module="skills-grid">
+  <div class="skills-grid-container">
+    
+    {# Section Title #}
+    {% if module.section_title %}
+      <h2 class="skills-grid-title">{{ module.section_title }}</h2>
+    {% else %}
+      <h2 class="skills-grid-title">Skills</h2>
+    {% endif %}
+
+    {# Skills Grid #}
+    {% if module.skills %}
+      <div class="skills-grid">
+        {% for skill in module.skills %}
+          <div class="skill-card-item">
+            
+{# Skill Icon - هنا التعديل الأساسي لرفع الصور #}
+      {% if skill.skill_icon.src %}
+        <div class="skill-card-icon">
+          <img 
+            src="{{ skill.skill_icon.src }}" 
+            alt="{{ skill.skill_icon.alt || skill.skill_name }}"
+            class="skill-img"
+            loading="lazy"
+          />
+              </div>
+            {% endif %}
+
+            {# Skill Name #}
+            <h3 class="skill-card-name">{{ skill.skill_name }}</h3>
+
+            {# Optional: Skill Level or Description #}
+            {% if skill.skill_description %}
+              <p class="skill-description">{{ skill.skill_description }}</p>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-skills">
+        <p>No skills added yet.</p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
